@@ -31,7 +31,6 @@ def hamiltonian(vertices, double_edges):
         double_edges[node_pos].remove(next_node)
         double_edges[reverse_node_pos].remove(this_node)
         walk.append(vertices[node_pos])
-        print(walk)
         node_pos = guide[next_node.id]
     # shortcut
     visited = []
@@ -41,6 +40,7 @@ def hamiltonian(vertices, double_edges):
         element = walk[pos]
         if element not in visited:
             visited.append(element)
+            # print(element.id, end='->')
         pos += 1
     return visited
 
@@ -65,7 +65,6 @@ def edge_price(start, end, room):
 
 
 def mst(room, dust_nodes, robot_location):
-    printroom(room)
     edges = [[99999 for i in range(len(dust_nodes) + 1)] for i in range((len(dust_nodes) + 1))]
     vertices = [room[robot_location[1]][robot_location[0]]]
     vertices.extend(dust_nodes)
@@ -79,8 +78,8 @@ def mst(room, dust_nodes, robot_location):
             edges[y][x] = edge_price(start, end, copy.deepcopy(room))
             x += 1
         y += 1
-    for node in vertices:
-        print(node.id, node.symbol)
+    # for node in vertices:
+    #     print(node.id, node.symbol)
     node = vertices[0]
     node_pos = 0
     free_nodes = [i for i in range(len(vertices))]
@@ -109,30 +108,39 @@ def vacuum_smart(room, dust_nodes, robot_location):
     vertices = mst(room, dust_nodes, robot_location)
     print("MST")
     for v in vertices:
-        print(v.id)
+        # print(v.id)
         prev = v.prev
         while prev:
-            print(prev.id)
+            # print(prev.id)
             prev = prev.prev
-        print()
+        # print()
     double_edges = eulerian(vertices)
     print("EULERIAN WALK")
     pos = 0
     for e in double_edges:
-        print("FROM", vertices[pos].id)
+        # print("FROM", vertices[pos].id)
         pos += 1
-        for node in e:
-            print(node.id)
-        print()
+        # for node in e:
+            # print(node.id)
+        # print()
     print("HAMILTONIAN")
     walk = hamiltonian(vertices, double_edges)
-    for w in walk:
-        print(w.id, end='->')
-    
+    steps = 0
+    for yline in room:
+        for v in yline:
+            if v.flag != 0:
+                print(v.id, "not zero")
+            if v.prev:
+                v.prev = None
+    for i in range(len(walk) - 1):
+        steps += edge_price(walk[i], walk[i+1], copy.deepcopy(room))
+    return steps
+
 
 
 
 def task1(room):
+    printroom(room)
     dust_locations = []
     dust_nodes = []
     robot_location = (0, 0)
@@ -147,14 +155,9 @@ def task1(room):
                 dust_nodes.append(node)
             x += 1
         y += 1
-    # start_time = time.time_ns()
-    # solution_bfs = vacuum_bfs(copy.deepcopy(room), robot_location)
-    # benchmark = time.time_ns() - start_time
-    # print("BENCHMARK BFS", benchmark)
-    # printroom(solution_bfs)
-    #solution_mst = mst(room, dust_locations, robot_location)
-    vacuum_smart(room, dust_nodes, robot_location)
-
+    solution_bfs = vacuum_bfs(copy.deepcopy(room), robot_location)
+    steps = vacuum_smart(room, dust_nodes, robot_location)
+    print("SMART VACUUM:", steps)
 
 
 def bfs(room, robot_location, spanning_tree=False, ID=None):
@@ -198,20 +201,20 @@ def bfs(room, robot_location, spanning_tree=False, ID=None):
 def vacuum_bfs(room, robot_location):
     dust = bfs(copy.deepcopy(room), robot_location)
     moves = []
-    rep = 'a'
-    position = 1
+    print(robot_location)
     while dust:
+        print(dust.x, dust.y)
         robot_location = (dust.x, dust.y)
-        room[dust.y][dust.x].symbol = str(position)
+        room[dust.y][dust.x].symbol = '.'
         while dust.prev:
-            dust.symbol = rep
-            room[dust.y][dust.x].symbol = rep
+            dust.symbol = '.'
+            room[dust.y][dust.x].symbol = '.'
             moves.append(dust)
             dust = dust.prev
         moves.append(dust)
+        print(len(moves))
         dust = bfs(copy.deepcopy(room), robot_location)
-        rep = chr(ord(rep) + 1)
-        position += 1
+    print("BFS:", len(moves))
     return room
 
 
@@ -245,5 +248,5 @@ def readfile(filename):
 
 
 if __name__ == '__main__':
-    room = readfile('data/3_1.txt')
+    room = readfile('data/3_2.txt')
     task1(room)
