@@ -14,7 +14,7 @@ Dust: **@**
 
 Wall: **x**
 
-###First solution
+### First solution
 #### Naive solution using BFS and hungry algorithm
 Robot locates dust closest to him using BFS.
 He collects this dust, and then robot repeats the process of localizing the closest dust using BFS.
