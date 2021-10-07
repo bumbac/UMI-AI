@@ -22,10 +22,11 @@ He collects this dust, and then robot repeats the process of localizing the clos
 This approach provides suboptimal results, for example on grid:
 
 Steps:
+```
 1. @@.O..@
 2. @@O...@
 3. @O....@
-
+```
 and then robot needs to return to the rightmost cell.
 
 ###Second solution
@@ -56,7 +57,21 @@ using shortcuts A-B-E-C-D-F-G
 After this process a Hamiltonian tour (sequence of vertices) is created where each vortex is visited exactly once.
 Robot will collect dust particles in this sequence.
 
-This approach provides suboptimal results.
+This approach provides suboptimal results, for example on grid:
+
+```
+.@..@
+@xxxx
+.O..@
+```
+
+Robot collects the dust in the middle row and continues up to collect dust in the first row. Later robot needs to
+return to the last row. In optimal solution robot starts by collecting dust on the right and then moves to second
+and first row. The reason for this suboptimal results lies in the creation of Euclidian tour, where weight of the edges
+is not taken into account. As MST does not have cycles with negative weight Dijkstra algorithm can be used for finding
+the optimal path through MST with duplicated edges.
+
+
 
 
 
