@@ -1,18 +1,17 @@
-(define (problem monkey-1 )
-(:domain monkey-banana )
-(:requirements :typing :hierachie)
-
-(:objects rooma roomb roomc - room
-banana1 - ball 
-box1 - box )
-(:htn :parameters () :ordered-subtasks (and
-(task1 (move-box box roomb)
-(task2 (get-banana banana roomb)))
-))
-(:init (at-robby rooma )
-(free right )
-(at monkey rooma )
-(at banana roomb )
-(at box roomc )
-(not (up box)) )
-)
+(define (problem monkey-1)
+(:domain monkey-banana)
+(:objects 
+rooma roomb roomc - room
+banana1 - banana 
+box1 - box)
+(:htn
+ :tasks
+ (task1 (move_box box1 roomc roomb))
+ :ordering ()
+ :constraints())
+(:init 
+(at-robby rooma)
+(at banana1 roomb)
+(at box1 roomc)
+(not (up))
+(free)))
