@@ -5,8 +5,10 @@ rooma roomb roomc - room
 banana1 - banana 
 box1 - box)
 (:htn
- :tasks
+ :tasks (and
  (task1 (move_box box1 roomc roomb))
+ (task2 (take_banana banana1 roomb))
+ )
  :ordering ()
  :constraints())
 (:init 
