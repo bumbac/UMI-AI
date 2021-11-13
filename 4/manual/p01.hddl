@@ -8,6 +8,7 @@ box1 - box)
  :tasks (and
  (task1 (move_box box1 roomc roomb))
  (task2 (take_banana banana1 roomb))
+ (task3 (cleanup box1 banana1 roomc roomb rooma))
  )
  :ordering ()
  :constraints())

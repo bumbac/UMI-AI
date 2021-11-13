@@ -1,0 +1,69 @@
+[39m    [36m_           _         _
+   [32m\ [94m|         [32m\ [94m|       [32m| [94m|                       
+   [32m| [94m|     [36m__  [32m| [94m|      [36m_[32m| [94m|[36m______                
+   [32m| [94m|     [32m\[94m/  [32m| [94m|     [32m/[93m_   ______[94m\                
+   [32m| [94m|      [36m_  [32m| [94m|   [36m__  [32m| [94m|  [36m___   ___   ___       
+   [32m| [94m|[36m___  [32m| [94m| [32m| [94m|  [32m/ [94m.\ [32m| [94m| [32m/ [94m, | [32m|   [94m\ [32m/ [94m·[93m_[94m\    
+   [32m\[93m_____[94m\ [32m|[93m_[94m| [32m|[93m__[94m\ [32m\[93m__[94m/ [32m|[93m_[94m| [32m\[93m___[94m) [32m|[93m_[94m|[93m_[94m| [32m\[93m___[94m\  
+[39m[34mL i l o t a n e[39m[34m  version rls-glucose4
+[39m[34mby Dominik Schreiber <dominik.schreiber@kit.edu> 2020-2021
+[39m[34musing SAT solver glucose4
+[39m[34m
+[39m[90m0.001 [39m[97mParser finished.
+[39m[90m0.001 [39m[97mStructures extracted.
+[39m[90m0.002 [39m[97m15 operators and 6 methods created.
+[39m[90m0.002 [39m[97mMined 1 new reduction preconditions (+6.7%).
+[39m[90m0.002 [39m[97mIteration 0.
+[39m[90m0.002 [39m[97mCreating initial layer of size 2
+[39m[90m0.002 [39m[97mAttempting to solve formula with 3 clauses (3 literals) and 1 assumptions
+[39m[90m0.002 [39m[97mUnsolvable at layer 0 -- expanding.
+[39m[90m0.002 [39m[97mIteration 1.
+[39m[90m0.002 [39m[97mNew layer size: 4
+[39m[90m0.002 [39m[97mInstantiating ...
+[39m[90m0.002 [39m[97mCollected 5 relevant facts at this layer
+[39m[90m0.002 [39m[97mEncoding ...
+[39m[90m0.002 [39m[97mAttempting to solve formula with 30 clauses (49 literals) and 3 assumptions
+[39m[90m0.002 [39m[97mUnsolvable at layer 1 -- expanding.
+[39m[90m0.002 [39m[97mIteration 2.
+[39m[90m0.002 [39m[97mNew layer size: 11
+[39m[90m0.002 [39m[97mInstantiating ...
+[39m[90m0.002 [39m[97mCollected 9 relevant facts at this layer
+[39m[90m0.002 [39m[97mEncoding ...
+[39m[90m0.003 [39m[97mAttempting to solve formula with 162 clauses (335 literals) and 0 assumptions
+[39mc last restart ## conflicts  :  0 13 
+[90m0.003 [39m[97mFound a solution at layer 2.
+[39m[34m==>
+27 move rooma roomc
+35 push roomc roomb box1
+40 climbup roomb box1
+44 grasp roomb banana1 box1
+47 climbdown roomb box1
+49 move roomb rooma
+52 ungrasp rooma banana1
+56 move rooma roomb
+60 push roomb roomc box1
+64 move roomc rooma
+root 5 12 16
+5 move_box box1 roomc roomb -> m0_move_box 26 35
+12 take_banana banana1 roomb -> m1_take_banana 40 44
+16 cleanup box1 banana1 roomc roomb rooma -> m4_cleanup 47 49 52 56 60 64
+26 goto roomc -> m3_goto 27
+[39m[34m<==
+[39m[90m0.003 [39m[97mEnd of solution plan. (counted length of 10)
+[39m[90m0.003 [39m[97mTotal amount of clauses encoded: 162
+[39m[90m0.003 [39m[97m- directframeaxioms : 54 cls
+[39m[90m0.003 [39m[97m- actionconstraints : 27 cls
+[39m[90m0.003 [39m[97m- actioneffects : 22 cls
+[39m[90m0.003 [39m[97m- reductionconstraints : 15 cls
+[39m[90m0.003 [39m[97m- truefacts : 9 cls
+[39m[90m0.003 [39m[97m- axiomaticops : 2 cls
+[39m[90m0.003 [39m[97m- substitutionconstraints : 1 cls
+[39m[90m0.003 [39m[97m# instantiated positions: 16
+[39m[90m0.003 [39m[97m# instantiated actions: 12
+[39m[90m0.003 [39m[97m# instantiated reductions: 4
+[39m[90m0.003 [39m[97m# introduced pseudo-constants: 1
+[39m[90m0.003 [39m[97m# retroactive prunings: 0
+[39m[90m0.003 [39m[97m# retroactively pruned operations: 0
+[39m[90m0.003 [39m[97m# dominated operations: 0
+[39m[90m0.003 [39m[97mExiting happily (no cleaning up).
+[39m

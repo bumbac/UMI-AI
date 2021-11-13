@@ -14,6 +14,9 @@
 (:task take_banana
   :parameters (?banana - banana  ?from - room) )
 
+(:task cleanup
+  :parameters (?box - box  ?banana - banana ?boxpos - room ?bananapos - room ?monkeypos - room) )
+
 (:task goto
   :parameters (?to - room) )
  
@@ -27,7 +30,17 @@
   :parameters ( ?banana - banana ?from - room ?box - box )
   :task (take_banana  ?banana ?from )
   :precondition (and  (not (up)) (free) (at ?box ?from) (at-robby ?from) (at ?banana ?from))
-  :ordered-subtasks(and (t1 ( climbup ?from ?box )) (t2 (grasp ?from ?banana ?box ) )) )
+  :ordered-subtasks(and (t1 ( climbup ?from ?box )) (t2 (grasp ?from ?banana ?box )) ) )
+ 
+(:method m4_cleanup
+  :parameters ( ?box - box ?banana - banana ?boxpos - room ?bananapos - room ?monkeypos - room)
+  :task (cleanup  ?box  ?banana ?boxpos ?bananapos ?monkeypos)
+  :precondition (and  (up) (not (free)) (at ?box ?bananapos) (at-robby ?bananapos) (not (at ?banana ?bananapos)))
+  :ordered-subtasks
+   (and 
+   (t1 (climbdown ?bananapos ?box )) (t2 (move ?bananapos ?monkeypos)) (t3 (ungrasp ?monkeypos ?banana))
+   (t4 (move ?monkeypos ?bananapos)) (t5 (push ?bananapos ?boxpos ?box )) (t6 (move ?boxpos ?monkeypos))
+   ))
  
  (:method m2_goto
   :parameters ( ?to - room )
