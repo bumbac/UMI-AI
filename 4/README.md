@@ -21,14 +21,23 @@ se opice na začátku nachází.
 Nabízí  se  použít  následující  operátory,  jejichž  význam  v doméně  je  očekávatelný  a  proto 
 uvedeme jen názvy: Go, Push, ClimbUp, ClimbDown, Grasp, Ungrasp. 
  
-a) V navržené doméně sestavte plán, kterým se opice zmocní banánů. 
-b) Upravte  cíl  tak,  aby  opice  zmátla  vědce,  kteří  ji  pozorují,  tj.  zmocnila  se  banánů,  ale 
+**a)** V navržené doméně sestavte [plán](https://gitlab.fit.cvut.cz/sutymate/ni-umi/blob/master/4/src/Manual_monkey_plan.txt), kterým se opice zmocní banánů. 
+
+**b)** Upravte  [cíl](https://gitlab.fit.cvut.cz/sutymate/ni-umi/blob/master/4/src)  tak,  aby  opice  zmátla  vědce,  kteří  ji  pozorují,  tj.  zmocnila  se  banánů,  ale 
 zároveň uvedla prostředí do původního stavu (krabice zpět na své místo). 
-c) Úlohu řešte automaticky pomocí nějakého plánovače účastnícího se soutěže IPC. 
-d) V prostředí se bude vyskytovat více krabic dvou typů, a  sice lehké a těžké. S těžkými 
+
+**c)** Úlohu řešte automaticky pomocí nějakého plánovače účastnícího se soutěže IPC.
+
+  [Riešenie 1](https://gitlab.fit.cvut.cz/sutymate/ni-umi/blob/master/4/src/solution1.txt)
+  
+  [Riešenie 2](https://gitlab.fit.cvut.cz/sutymate/ni-umi/blob/master/4/src/confuse_scientist_solution.txt)
+
+  I have chosen **Lilotane** [0] from IPC 2021 competition. This planner uses SAT solver (glucose4 in this task)
+  to find totally ordered hierarchical plan.
+
+**d)** V prostředí se bude vyskytovat více krabic dvou typů, a  sice lehké a těžké. S těžkými 
 opice  nedokáže  pohnout  s lehkými  ano.  Modifikujte  doménu,  aby  tyto  vlastnosti 
 operátory zohledňovaly. 
 
 
 [0] Schreiber, D. (2021). [**Lilotane: A Lifted SAT-based Approach to Hierarchical Planning.**](https://doi.org/10.1613/jair.1.12520) In Journal of Artificial Intelligence Research (JAIR) 2021 (70), pp. 1117-1181.
-
