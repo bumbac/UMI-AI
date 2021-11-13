@@ -1,0 +1,18 @@
+O - opice
+A, B, C - pozicie
+K - krabica
+F - banan !!!!!!!!!!!!!!!!!! NIE B!!!!!!!!!!!!!!!!!!!
+GO, PUSH, CU, CD, GRASP, UGRASP - operacie
+GO(O, A, B)
+GO(O, B, C)
+PUSH(O, K, C, B)
+GO(O, C, B)
+CU(O, K)
+GRASP(O, F)
+------------------------------POKRACUJE ROZSIRENIE NA ZMATENIE VEDCOV--------------------------------
+CD(O, K)
+GO(O, B, A)
+UNGRASP(O,F)
+GO(O, A, B)
+PUSH(O, K, B, C)
+GO(O, B, A)
